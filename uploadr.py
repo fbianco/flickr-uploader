@@ -2,6 +2,7 @@
 
 """
 
+
     flickr-uploader designed for Synology Devices
     Upload a directory of media to Flickr to use as a backup to your local storage.
 
@@ -469,7 +470,7 @@ class Uploadr:
                 print("Uploading " + file + "...")
 
                 if FULL_SET_NAME:
-                    setName = os.path.relpath(os.path.dirname(file), FILES_DIR)
+                    setName = FULL_SET_NAME
                 else:
                     head, setName = os.path.split(os.path.dirname(file))
                 try:
@@ -783,7 +784,7 @@ class Uploadr:
 
             for row in files:
                 if FULL_SET_NAME:
-                    setName = os.path.relpath(os.path.dirname(row[1]), FILES_DIR)
+                    setName = FULL_SET_NAME
                 else:
                     head, setName = os.path.split(os.path.dirname(row[1]))
                 newSetCreated = False
@@ -829,7 +830,7 @@ class Uploadr:
                 if (res['code'] == 1):
                     print("Photoset not found, creating new set...")
                     if FULL_SET_NAME:
-                        setName = os.path.relpath(os.path.dirname(file[1]), FILES_DIR)
+                        setName = FULL_SET_NAME
                     else:
                         head, setName = os.path.split(os.path.dirname(file[1]))
                     con = lite.connect(DB_PATH)
